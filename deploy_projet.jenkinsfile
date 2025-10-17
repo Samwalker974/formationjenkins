@@ -50,10 +50,8 @@ pipeline {
                                 transfers: [sshTransfer(
                                     remoteDirectory: '/tmp',
                                     sourceFiles: 'target/*.jar'
-                                )],
-                                verbose: true
+                                )]
                             )],
-                            verbose: true
                         )])                      
                     } else if (params.ENVIRONMENT == 'prod') {
                         echo 'Déploiement vers l\'environnement de production...'
