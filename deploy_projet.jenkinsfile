@@ -23,7 +23,14 @@ pipeline {
         stage('Test') {
             steps {
                sh 'ls -al'
-            // lire mon fichier groovy 
+               // Exécuter un fichier Groovy dans le workspace (remplacez 'monScript.groovy' par le nom réel)
+               sh '''
+                 if ! command -v groovy >/dev/null 2>&1; then
+                   echo "Groovy n'est pas installé sur cet agent."
+                   exit 1
+                 fi
+                 groovy test.groovy
+               '''
             }
         }
 
