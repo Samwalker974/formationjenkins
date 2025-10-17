@@ -50,9 +50,10 @@ pipeline {
                                     remoteDirectory: '/tmp',
                                     sourceFiles: 'target/*.jar',
                                     execCommand: 'ls -al'
-                                )]
+                                )],verbose: true
                             )],
                         )])
+                        
                     } else if (params.ENVIRONMENT == 'prod') {
                         echo 'Déploiement vers l\'environnement de production...'
                         // Ajouter les étapes spécifiques au déploiement en prod ici
