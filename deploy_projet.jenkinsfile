@@ -21,7 +21,11 @@ pipeline {
               sh "printenv"
             }
         }
-
+        stage('Build RPM') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
         stage('Test') {
             steps {
                sh 'ls -al'
