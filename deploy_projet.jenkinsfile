@@ -6,7 +6,7 @@ pipeline {
         CREDENTIALID ='GithubSam'
     }
     params {
-        string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner'),
+        string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner')
         enum(name: 'ENVIRONMENT', values: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
     }
     stages {
