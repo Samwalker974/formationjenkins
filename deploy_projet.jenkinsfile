@@ -1,0 +1,38 @@
+// Approve signature in Jenkins Script Console
+pipeline {
+    agent any
+    stages {
+        stage('Cloner le repertoire') {
+            steps {
+              //git branch: 'master', url: 'https://github.com/Samwalker974/jenkins.git ', credentialsId: 'Samwalker974'
+              checkout([
+                $class: 'GitSCM',
+                branches: [[name: '*/master']],
+                userRemoteConfigs: [[
+                    url: 'https://github.com/Samwalker974/formationjenkins.git',
+                    credentialsId: 'GithubSam'
+                ]]
+              ])
+            }
+        }
+
+        stage('Test') {
+            steps {
+               sh 'ls -al'
+               //sh 'cat server.csv'
+                script {
+                    def lines = readFile('server.csv').split("\n")
+                    lines.eachWithIndex { line, index ->
+                    echo "Ligne ${index + 1} : ${line}"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying en cours...'
+            }
+        }
+    }
+}
