@@ -2,8 +2,8 @@
 pipeline {
     agent any
     environment {
-        URL = 'https://github.com/Samwalker974/formationjenkins.git'
-        CREDENTIALID = 'GithubSam'
+        URL: 'https://github.com/Samwalker974/formationjenkins.git'
+        CREDENTIALID: 'GithubSam'
     }
     stages {
         stage('Cloner le repertoire') {
