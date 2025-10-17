@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        URL = 'https://github.com/Samwalker974/formationjenkins.git',
+        URL = 'https://github.com/Samwalker974/formationjenkins.git'
         CREDENTIALID = 'GithubSam'
     }
     stages {
