@@ -5,7 +5,7 @@ pipeline {
         URL0 ='https://github.com/Samwalker974/formationjenkins.git'
         CREDENTIALID ='GithubSam'
     }
-    params {
+    parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner')
         enum(name: 'ENVIRONMENT', values: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
     }
@@ -37,10 +37,10 @@ pipeline {
             steps {
                 echo 'Environnement de déploiement: ${params.ENVIRONMENT}'
                 script {
-                    if (params.ENVIRONMENT == 'dev') {
+                    if (parameters.ENVIRONMENT == 'dev') {
                         echo 'Déploiement vers l\'environnement de développement...'
                         // Ajouter les étapes spécifiques au déploiement en dev ici
-                    } else if (params.ENVIRONMENT == 'prod') {
+                    } else if (parameters.ENVIRONMENT == 'prod') {
                         echo 'Déploiement vers l\'environnement de production...'
                         // Ajouter les étapes spécifiques au déploiement en prod ici
                     }
