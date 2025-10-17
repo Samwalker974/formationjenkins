@@ -17,6 +17,8 @@ pipeline {
                     credentialsId: env.CREDENTIALID
                 ]]
               ])
+              echo "Repository cloné avec succès."
+              sh "printenv"
             }
         }
 
