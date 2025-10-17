@@ -7,7 +7,7 @@ pipeline {
               //git branch: 'master', url: 'https://github.com/Samwalker974/jenkins.git ', credentialsId: 'Samwalker974'
               checkout([
                 $class: 'GitSCM',
-                branches: [[name: '*/master']],
+                branches: [[name: '*/main']],
                 userRemoteConfigs: [[
                     url: 'https://github.com/Samwalker974/formationjenkins.git',
                     credentialsId: 'GithubSam'
