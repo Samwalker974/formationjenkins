@@ -5,6 +5,10 @@ pipeline {
         URL0 ='https://github.com/Samwalker974/formationjenkins.git'
         CREDENTIALID ='GithubSam'
     }
+    params {
+        string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner'),
+        enum(name: 'ENVIRONMENT', values: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
+    }
     stages {
         stage('Cloner le repertoire') {
             steps {
@@ -21,11 +25,7 @@ pipeline {
               sh "printenv"
             }
         }
-        stage('Test') {
-            steps {
-               sh 'ls -al'
-            }
-        }
+
         stage('Build Project') {
             steps {
                 sh 'chmod +x mvnw'
@@ -35,7 +35,16 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying en cours...'
+                echo 'Environnement de déploiement: ${params.ENVIRONMENT}'
+                script {
+                    if (params.ENVIRONMENT == 'dev') {
+                        echo 'Déploiement vers l\'environnement de développement...'
+                        // Ajouter les étapes spécifiques au déploiement en dev ici
+                    } else if (params.ENVIRONMENT == 'prod') {
+                        echo 'Déploiement vers l\'environnement de production...'
+                        // Ajouter les étapes spécifiques au déploiement en prod ici
+                    }
+                }
             }
         }
     }
