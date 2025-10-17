@@ -1,6 +1,10 @@
 // Approve signature in Jenkins Script Console
 pipeline {
     agent any
+    environment {
+        URL = 'https://github.com/Samwalker974/formationjenkins.git',
+        CREDENTIALID = 'GithubSam'
+    }
     stages {
         stage('Cloner le repertoire') {
             steps {
@@ -9,8 +13,8 @@ pipeline {
                 $class: 'GitSCM',
                 branches: [[name: '*/main']],
                 userRemoteConfigs: [[
-                    url: 'https://github.com/Samwalker974/formationjenkins.git',
-                    credentialsId: 'GithubSam'
+                    url: "${URL}",
+                    credentialsId: "${CREDENTIALID}"
                 ]]
               ])
             }
@@ -19,6 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                sh 'ls -al'
+            // lire mon fichier groovy 
             }
         }
 
