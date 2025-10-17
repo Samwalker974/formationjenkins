@@ -7,6 +7,10 @@ pipeline {
     }
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner')
+        booleanParam(name: 'mineur',description: 'Indique si la version est mineure')
+        booleanParam(name: 'majeur',description: 'Indique si la version est majeure')
+        booleanParam(name: 'patch',description: 'Indique si la version est un patch')
+        booleanParam(name: 'snapshot',description: 'Indique si la version est un snapshot')
         choice(name: 'ENVIRONMENT', choices: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
     }
     stages {
