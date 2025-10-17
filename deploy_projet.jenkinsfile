@@ -36,25 +36,6 @@ pipeline {
                 sh './mvnw clean package spring-boot:repackage -Dmaven.test.skip=true'
             }
         }
-        stage('Déploiement sur serveur distant') {
-            steps {
-                echo "Environnement ${params.environment}"
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'training-server',  // correspond au Nom de la configuration
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'target/*.jar',
-                                    remoteDirectory: '/',
-                                    execCommand: 'ls -al'
-                                )
-                            ]
-                        )
-                    ]
-                )
-            }
-        }
         stage('Deploy') {
             steps {
                 echo "L'environnement de déploiement est : ${params.ENVIRONMENT}"
@@ -68,6 +49,7 @@ pipeline {
                                 transfers: [sshTransfer(
                                     remoteDirectory: '/tmp',
                                     sourceFiles: 'target/*.jar'
+                                    execCommand: 'ls -al'
                                 )]
                             )],
                         )])
