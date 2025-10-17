@@ -1,4 +1,0 @@
-nom,ip,ssh,username
-bdd,172.10.40.40,22,postgres
-haproxy,172.10.40.100,22,dev01
-app,172.10.40.104,22,dev01
