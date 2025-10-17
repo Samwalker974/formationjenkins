@@ -35,7 +35,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Environnement de déploiement: ${params.ENVIRONMENT}'
+                echo "L'environnement de déploiement est : ${parameters.ENVIRONMENT}"
                 script {
                     if (parameters.ENVIRONMENT == 'dev') {
                         echo 'Déploiement vers l\'environnement de développement...'
