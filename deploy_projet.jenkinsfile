@@ -7,7 +7,7 @@ pipeline {
     }
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Choisir la branche à cloner')
-        choice(name: 'ENVIRONMENT', values: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'prod'], description: 'Selectionner l\'environnement de déploiement')
     }
     stages {
         stage('Cloner le repertoire') {
